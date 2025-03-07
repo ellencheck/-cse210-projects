@@ -1,14 +1,16 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 class Program
 {
-    static void Main(string[] args)
-{
     static void Main()
     {
+        // Create a list to store the numbers
         List<int> numbers = new List<int>();
         Console.WriteLine("Enter a list of numbers, type 0 when finished.");
-        
+
+        // Continuously ask for user input until they enter 0
         while (true)
         {
             Console.Write("Enter number: ");
@@ -18,6 +20,7 @@ class Program
             numbers.Add(number);
         }
 
+        // If there are numbers in the list, perform calculations and display results
         if (numbers.Count > 0)
         {
             int sum = numbers.Sum();
