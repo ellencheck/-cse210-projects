@@ -4,36 +4,36 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Вызов DisplayWelcome для отображения приветственного сообщения
+        // Call DisplayWelcome to show a welcome message
         DisplayWelcome();
 
-        // Вызов PromptUserName для получения имени пользователя
+        // Call PromptUserName to get the user's name
         string userName = PromptUserName();
 
-        // Вызов PromptUserNumber для получения любимого числа пользователя
+        // Call PromptUserNumber to get the user's favorite number
         int userNumber = PromptUserNumber();
 
-        // Вызов SquareNumber для вычисления квадрата числа пользователя
+        // Call SquareNumber to calculate the square of the user's number
         int squaredNumber = SquareNumber(userNumber);
 
-        // Вызов DisplayResult для отображения итогового результата
+        // Call DisplayResult to show the final result
         DisplayResult(userName, squaredNumber);
     }
 
-    // Функция для отображения приветственного сообщения
+    // Function to display a welcome message
     static void DisplayWelcome()
     {
         Console.WriteLine("Welcome to the Program!");
     }
 
-    // Функция для запроса имени пользователя и его возврата
+    // Function to ask for the user's name and return it
     static string PromptUserName()
     {
         Console.Write("Please enter your name: ");
         return Console.ReadLine();
     }
 
-    // Функция для запроса любимого числа пользователя
+    // Function to ask for the user's favorite number
     static int PromptUserNumber()
     {
         Console.Write("Please enter your favorite number: ");
@@ -41,13 +41,13 @@ class Program
         return number;
     }
 
-    // Функция для возведения числа в квадрат
+    // Function to square a number
     static int SquareNumber(int number)
     {
         return number * number;
     }
 
-    // Функция для отображения результата
+    // Function to display the result
     static void DisplayResult(string userName, int squaredNumber)
     {
         Console.WriteLine($"{userName}, the square of your number is {squaredNumber}");
