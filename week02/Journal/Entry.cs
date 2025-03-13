@@ -13,3 +13,4 @@ class Entry
         Date = date;
     }
 }
+
