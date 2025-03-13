@@ -4,7 +4,7 @@ using System.IO;
 
 class Journal
 {
-    private List<Entry> entries = new List<Entry>(); // List to store journal entries
+    private List<Entry> entries = new List<Entry>();
     private Random random = new Random();
 
     private List<string> prompts = new List<string>
@@ -18,13 +18,13 @@ class Journal
 
     public void WriteEntry()
     {
-        string prompt = prompts[random.Next(prompts.Count)]; // Pick a random prompt
+        string prompt = prompts[random.Next(prompts.Count)];
         Console.WriteLine(prompt);
         string response = Console.ReadLine();
-        string date = DateTime.Now.ToString("yyyy-MM-dd"); // Get the current date
+        string date = DateTime.Now.ToString("yyyy-MM-dd");
 
         Entry newEntry = new Entry(prompt, response, date);
-        entries.Add(newEntry); // Add the new entry to the journal
+        entries.Add(newEntry);
     }
 
     public void DisplayEntries()
