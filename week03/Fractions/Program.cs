@@ -6,17 +6,9 @@ public class Fraction
     private int _denominator;
 
     // Constructors
-    public Fraction()
-    {
-        _numerator = 1;
-        _denominator = 1;
-    }
+    public Fraction() : this(1, 1) { }
 
-    public Fraction(int numerator)
-    {
-        _numerator = numerator;
-        _denominator = 1;
-    }
+    public Fraction(int numerator) : this(numerator, 1) { }
 
     public Fraction(int numerator, int denominator)
     {
@@ -26,31 +18,53 @@ public class Fraction
         }
         _numerator = numerator;
         _denominator = denominator;
+        Simplify(); // Simplify the fraction when it's created
     }
 
-    // Getters and Setters
-    public int GetNumerator()
+    // Properties for Numerator and Denominator
+    public int Numerator
     {
-        return _numerator;
+        get => _numerator;
+        set => _numerator = value;
     }
 
-    public void SetNumerator(int numerator)
+    public int Denominator
     {
-        _numerator = numerator;
-    }
-
-    public int GetDenominator()
-    {
-        return _denominator;
-    }
-
-    public void SetDenominator(int denominator)
-    {
-        if (denominator == 0)
+        get => _denominator;
+        set
         {
-            throw new ArgumentException("Denominator cannot be zero.");
+            if (value == 0)
+            {
+                throw new ArgumentException("Denominator cannot be zero.");
+            }
+            _denominator = value;
+            Simplify(); // Simplify after changing the denominator
         }
-        _denominator = denominator;
+    }
+
+    // Method to simplify the fraction
+    private void Simplify()
+    {
+        int gcd = GCD(Math.Abs(_numerator), Math.Abs(_denominator));
+        _numerator /= gcd;
+        _denominator /= gcd;
+        if (_denominator < 0)  // Ensure the denominator is positive
+        {
+            _numerator = -_numerator;
+            _denominator = -_denominator;
+        }
+    }
+
+    // Method to calculate the Greatest Common Divisor
+    private int GCD(int a, int b)
+    {
+        while (b != 0)
+        {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
     }
 
     // Methods to return representations
@@ -65,25 +79,25 @@ public class Fraction
     }
 }
 
-// Testing the Fraction class
 public class Program
 {
     public static void Main(string[] args)
     {
+        // Your program logic here
         Fraction f1 = new Fraction();
-        Console.WriteLine(f1.GetFractionString());
-        Console.WriteLine(f1.GetDecimalValue());
+        Console.WriteLine(f1.GetFractionString());  // Output: 1/1
+        Console.WriteLine(f1.GetDecimalValue());   // Output: 1
 
         Fraction f2 = new Fraction(5);
-        Console.WriteLine(f2.GetFractionString());
-        Console.WriteLine(f2.GetDecimalValue());
+        Console.WriteLine(f2.GetFractionString());  // Output: 5/1
+        Console.WriteLine(f2.GetDecimalValue());   // Output: 5
 
         Fraction f3 = new Fraction(3, 4);
-        Console.WriteLine(f3.GetFractionString());
-        Console.WriteLine(f3.GetDecimalValue());
+        Console.WriteLine(f3.GetFractionString());  // Output: 3/4
+        Console.WriteLine(f3.GetDecimalValue());   // Output: 0.75
 
-        Fraction f4 = new Fraction(1, 3);
-        Console.WriteLine(f4.GetFractionString());
-        Console.WriteLine(f4.GetDecimalValue());
+        Fraction f4 = new Fraction(10, 5);
+        Console.WriteLine(f4.GetFractionString());  // Output: 2/1 (simplified)
+        Console.WriteLine(f4.GetDecimalValue());   // Output: 2
     }
 }
