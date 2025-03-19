@@ -1,9 +1,16 @@
-
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
+
+  <!-- Удалите явные ссылки на файлы .cs -->
+  <!-- Эти строки больше не нужны -->
+  <!-- <ItemGroup> -->
+  <!--   <Compile Include="Reference.cs" /> -->
+  <!--   <Compile Include="Word.cs" /> -->
+  <!--   <Compile Include="Scripture.cs" /> -->
+  <!-- </ItemGroup> -->
 
 </Project>
