@@ -39,7 +39,6 @@ class Program
                 scripture.HideRandomWords();
             }
         }
-
         // When all words are hidden, print the final message
         Console.WriteLine("\nAll words hidden! Well done.");
     }
